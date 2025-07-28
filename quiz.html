@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHER - Quiz</title>
+
+    <!-- Link - Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link - CSS -->
+    <link rel="stylesheet" href="css/quiz-style.css" />
+  </head>
+  <body data-theme="light">
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">AETHER</div>
+          <div class="header-controls">
+            <a href="index.html" class="back-btn">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Kembali
+            </a>
+            <button class="theme-toggle" id="themeToggle">
+              <svg class="icon sun-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5" />
+                <path
+                  d="m12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+                />
+              </svg>
+              <svg
+                class="icon moon-icon"
+                viewBox="0 0 24 24"
+                style="display: none"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <div class="progress-section">
+          <div class="progress-header">
+            <div class="progress-title">Progress Keseluruhan</div>
+            <div class="progress-stats" id="progressStats">
+              0 / 2400 Pertanyaan
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="breadcrumb" id="breadcrumb"></div>
+        </div>
+
+        <!-- Difficulty Selection Screen -->
+        <div class="quiz-container active" id="difficultyScreen">
+          <div class="selection-screen">
+            <h1 class="selection-title" id="topicTitle">
+              Pilih Tingkat Kesulitan
+            </h1>
+            <p class="selection-subtitle">
+              Setiap tingkat memiliki 10 level dengan 10 pertanyaan per level
+            </p>
+
+            <div class="difficulty-grid">
+              <div class="difficulty-card" data-difficulty="mudah">
+                <div class="difficulty-icon">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    />
+                  </svg>
+                </div>
+                <h3>Mudah</h3>
+                <p>Cocok untuk pemula, soal-soal dasar dan fundamental</p>
+              </div>
+
+              <div class="difficulty-card" data-difficulty="sulit">
+                <div class="difficulty-icon">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                  >
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                </div>
+                <h3>Sulit</h3>
+                <p>
+                  Untuk yang sudah berpengalaman, membutuhkan pemahaman mendalam
+                </p>
+              </div>
+
+              <div class="difficulty-card" data-difficulty="super-sulit">
+                <div class="difficulty-icon">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                    />
+                  </svg>
+                </div>
+                <h3>Super Sulit</h3>
+                <p>Tantangan ultimate untuk para ahli dan master</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level Selection Screen -->
+        <div class="quiz-container" id="levelScreen">
+          <div class="selection-screen">
+            <h1 class="selection-title">Pilih Level</h1>
+            <p class="selection-subtitle" id="levelSubtitle">
+              Setiap level berisi 10 pertanyaan
+            </p>
+
+            <div class="level-grid" id="levelGrid">
+              <!-- Levels will be generated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div class="quiz-container" id="questionScreen">
+          <div class="question-container">
+            <div class="question-header">
+              <div class="question-number" id="questionNumber">
+                Pertanyaan 1 dari 10
+              </div>
+            </div>
+
+            <div class="question-text" id="questionText">
+              <!-- Question will be loaded here -->
+            </div>
+
+            <div class="options-grid" id="optionsGrid">
+              <!-- Options will be loaded here -->
+            </div>
+          </div>
+
+          <div class="quiz-controls">
+            <div class="score-display" id="scoreDisplay">Skor: 0</div>
+            <button class="quiz-btn" id="nextBtn" disabled>
+              Jawab Pertanyaan
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Result Popup -->
+    <div class="result-popup" id="resultPopup">
+      <div class="result-content">
+        <div class="result-icon" id="resultIcon">✓</div>
+        <h2 class="result-title" id="resultTitle">Jawaban Benar!</h2>
+        <p class="result-text" id="resultText">
+          Selamat! Anda berhasil menjawab pertanyaan dengan tepat.
+        </p>
+        <button class="quiz-btn" id="continueBtn">Lanjutkan</button>
+      </div>
+    </div>
+
+    <!-- Link - Script(JavaScript) -->
+    <script src="js/script.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/quiz.js"></script>
+    <script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const sunIcon = document.querySelector(".sun-icon");
+      const moonIcon = document.querySelector(".moon-icon");
+
+      let currentTheme = localStorage.getItem("theme") || "light";
+      document.body.setAttribute("data-theme", currentTheme);
+
+      if (currentTheme === "dark") {
+        sunIcon.style.display = "none";
+        moonIcon.style.display = "block";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        document.body.setAttribute("data-theme", currentTheme);
+        localStorage.setItem("theme", currentTheme);
+
+        if (currentTheme === "dark") {
+          sunIcon.style.display = "none";
+          moonIcon.style.display = "block";
+        } else {
+          sunIcon.style.display = "block";
+          moonIcon.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

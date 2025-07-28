@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHER - Kuis Edukatif</title>
+
+    <!-- Link - Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link - CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-theme="light">
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">AETHER</div>
+          <button class="theme-toggle" id="themeToggle">
+            <svg class="theme-icon sun-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" />
+              <path
+                d="m12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+              />
+            </svg>
+            <svg
+              class="theme-icon moon-icon"
+              viewBox="0 0 24 24"
+              style="display: none"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="hero">
+          <h1>Kuis Edukatif</h1>
+          <p>
+            Cape ngerjain sendirian Asu <br />
+            pusing cok minta bantu AI bukan mempermudah malah bikin Error <br />
+            Segini AJA yang bisa di buat, kalo MAU Donasi bisa kirim Gopay yah
+            (0856-5106-4271), kekumpul 300k Up
+          </p>
+          <div class="hero-buttons">
+            <a href="result.html" class="btn btn-secondary">Lihat Hasil</a>
+          </div>
+        </section>
+
+        <section class="topics-grid" id="topicsGrid">
+          <!-- Topics will be loaded dynamically -->
+        </section>
+
+        <section class="stats">
+          <div class="stat-card">
+            <div class="stat-number">2400</div>
+            <div class="stat-label">Total Pertanyaan</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Tema Edukatif</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Tingkat Kesulitan</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">240</div>
+            <div class="stat-label">Level Total</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Link - Script(JavaScript) -->
+    <script src="js/script.js"></script>
+    <script>
+      // Topics data with icons
+      const topics = [
+        {
+          id: "matematika",
+          name: "Matematika",
+          description: "Soal-soal matematika dari dasar hingga lanjutan",
+          icon: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>',
+        },
+        {
+          id: "sains",
+          name: "Sains",
+          description: "Eksplorasi dunia sains dan pengetahuan alam",
+          icon: '<circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5l-4.24 4.24M7.76 7.76L3.52 3.52m12.96 12.96l-4.24-4.24M7.76 16.24l-4.24 4.24"/>',
+        },
+        {
+          id: "sejarah",
+          name: "Sejarah",
+          description: "Perjalanan sejarah dunia dan peradaban",
+          icon: '<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+        },
+        {
+          id: "bahasa-inggris",
+          name: "Bahasa Inggris",
+          description: "Kemampuan bahasa Inggris dan vocabulary",
+          icon: '<path d="M2.5 17a24.12 24.12 0 010-10 2 2 0 011.4-1.4 49.56 49.56 0 0116.2 0A2 2 0 0121.5 7a24.12 24.12 0 010 10 2 2 0 01-1.4 1.4 49.55 49.55 0 01-16.2 0A2 2 0 012.5 17z"/><path d="m7 8l4 4 4-4"/>',
+        },
+        {
+          id: "logika",
+          name: "Logika",
+          description: "Uji kemampuan berpikir logis dan analitis",
+          icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+        },
+        {
+          id: "geografi",
+          name: "Geografi",
+          description: "Pengetahuan tentang bumi dan alam semesta",
+          icon: '<circle cx="12" cy="12" r="10"/><polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"/>',
+        },
+        {
+          id: "teknologi",
+          name: "Teknologi",
+          description: "Perkembangan teknologi dan komputer",
+          icon: '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+        },
+        {
+          id: "pengetahuan-umum",
+          name: "Pengetahuan Umum",
+          description: "Wawasan umum dan pengetahuan global",
+          icon: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+        },
+      ];
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const sunIcon = document.querySelector(".sun-icon");
+      const moonIcon = document.querySelector(".moon-icon");
+
+      let currentTheme = localStorage.getItem("theme") || "light";
+      document.body.setAttribute("data-theme", currentTheme);
+
+      if (currentTheme === "dark") {
+        sunIcon.style.display = "none";
+        moonIcon.style.display = "block";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        document.body.setAttribute("data-theme", currentTheme);
+        localStorage.setItem("theme", currentTheme);
+
+        if (currentTheme === "dark") {
+          sunIcon.style.display = "none";
+          moonIcon.style.display = "block";
+        } else {
+          sunIcon.style.display = "block";
+          moonIcon.style.display = "none";
+        }
+      });
+
+      // Load topics
+      function loadTopics() {
+        const topicsGrid = document.getElementById("topicsGrid");
+
+        topics.forEach((topic) => {
+          const topicCard = document.createElement("div");
+          topicCard.className = "topic-card";
+          topicCard.onclick = () => selectTopic(topic.id);
+
+          topicCard.innerHTML = `
+                    <div class="topic-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            ${topic.icon}
+                        </svg>
+                    </div>
+                    <h3>${topic.name}</h3>
+                    <p>${topic.description}</p>
+                `;
+
+          topicsGrid.appendChild(topicCard);
+        });
+      }
+      // Select topic and redirect to quiz page
+      function selectTopic(topicId) {
+        localStorage.setItem("selectedTopic", topicId);
+        window.location.href = "quiz.html";
+      }
+
+      // Initialize
+      loadTopics();
+    </script>
+  </body>
+</html>
