@@ -31,12 +31,18 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   transition: var(--transition);
   min-height: 100vh;
-  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .container {
@@ -72,6 +78,42 @@ body {
   gap: 16px;
 }
 
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-buttons a {
+  text-decoration: none;
+}
+
+.hero-buttons .btn {
+  padding: 0.6rem 0.7rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-elegant),
+    var(--color-blue-premium)
+  );
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(90, 174, 255, 0.08);
+}
+.hero-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 171, 43, 0.788);
+}
+
+.right-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .theme-toggle,
 .back-btn {
   background: var(--color-surface);
@@ -91,7 +133,7 @@ body {
 .theme-toggle:hover,
 .back-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(180, 156, 115, 0.2);
+  box-shadow: 0 8px 24px rgba(245, 171, 43, 0.788);
 }
 
 .icon {
@@ -264,6 +306,57 @@ body {
   color: var(--color-text-secondary);
   font-size: 14px;
   line-height: 1.5;
+}
+
+/* Section: Guide Cards */
+.guide-section {
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.guide-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.guide-cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  cursor: pointer;
+}
+
+.guide-card {
+  background-color: var(--color-background-soft);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--color-border);
+}
+
+.guide-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.guide-card p {
+  font-size: 0.95rem;
+  color: var(--color-blue-premium);
+}
+
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode support */
+body[data-theme="dark"] .guide-card {
+  background-color: #1e1e2f;
+  border-color: #333;
 }
 
 .level-grid {
