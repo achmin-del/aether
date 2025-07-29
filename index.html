@@ -9,9 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Link Icon - lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Remix Icon CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
     <!-- Link - CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -20,41 +30,79 @@
       <div class="container">
         <div class="header-content">
           <div class="logo">AETHER</div>
-          <button class="theme-toggle" id="themeToggle">
-            <svg class="theme-icon sun-icon" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5" />
-              <path
-                d="m12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-              />
-            </svg>
-            <svg
-              class="theme-icon moon-icon"
-              viewBox="0 0 24 24"
-              style="display: none"
+
+          <div class="right-buttons">
+            <div class="hero-buttons">
+              <a href="result.html" class="btn btn-secondary"
+                ><i class="ri-user-3-line"></i>
+              </a>
+            </div>
+            <button
+              id="themeToggle"
+              aria-label="Toggle Dark Mode"
+              style="background: none; border: none; cursor: pointer"
             >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
+              <span class="sun-icon">
+                <!-- Ikon Matahari -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ri-sun-line"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <g>
+                    <path
+                      d="M12 4V2M12 22v-2M4.22 4.22l1.42 1.42M18.36 18.36l-1.42-1.42M2 12H4m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l-1.42 1.42"
+                    />
+                    <circle cx="12" cy="12" r="5" />
+                  </g>
+                </svg>
+              </span>
+              <span class="moon-icon" style="display: none">
+                <!-- Ikon Bulan -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ri-moon-line"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </header>
 
+    <!-- Section: Hero -->
     <main class="main">
       <div class="container">
         <section class="hero">
-          <h1>Kuis Edukatif</h1>
-          <p>
-          Selamat Datang!<br> Desain serta fitur yang dibuat Hanya Sementara<br> Jika ada Saran Fitur atau halaman, yang kalian mau kirim saran ke link berikut <a href="saran.html">Kirim saran</a>
-          </p>
-          <div class="hero-buttons">
-            <a href="result.html" class="btn btn-secondary">Lihat Hasil</a>
-          </div>
+          <h1>AETHER QUIZ</h1>
+          <p>Platfrom Quiz Online untuk meningkatkan pengetahuan umum.<br /></p>
         </section>
 
+        <!-- Section: Topik Quiz -->
+        <section class="topics">
+          <h2>Topik Quiz</h2>
+          <p>Pilih topik untuk memulai kuis</p>
+        </section>
+
+        <!-- Section: Grid Topik -->
         <section class="topics-grid" id="topicsGrid">
           <!-- Topics will be loaded dynamically -->
         </section>
 
+        <!-- Section: Statistik -->
         <section class="stats">
           <div class="stat-card">
             <div class="stat-number">2400</div>
@@ -75,6 +123,17 @@
         </section>
       </div>
     </main>
+
+    <section class="from-saran">
+      <button><a href="saran.html">Berikan Saran</a></button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>&copy; 2025 AETHER. All rights reserved.</p>
+      </div>
+    </footer>
 
     <!-- Link - Script(JavaScript) -->
     <script src="js/script.js"></script>
