@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Saran Pengguna</title>
+    <link rel="stylesheet" href="css/saran.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Kotak Saran</h1>
+      <form action="https://formspree.io/f/xwpqbwol" method="POST">
+        <label for="nama">Nama Anda</label>
+        <input
+          type="text"
+          name="nama"
+          id="nama"
+          placeholder="Masukkan nama"
+          required
+        />
+
+        <label for="pesan">Saran atau Masukan</label>
+        <textarea
+          name="pesan"
+          id="pesan"
+          rows="6"
+          placeholder="Tulis saran Anda di sini..."
+          required
+        ></textarea>
+
+        <input
+          type="hidden"
+          name="_subject"
+          id="subjectField"
+          value="Saran dari Pengguna"
+        />
+
+        <button type="submit" id="kirimBtn">Kirim Saran</button>
+      </form>
+      <p class="note">Kami menghargai setiap masukan dari Anda. 🙏</p>
+
+      <div class="back-link">
+        <a href="https://aetherquiz.vercel.app/" class="back-button"
+          >← Kembali ke Aether Quiz</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Aether Quiz. Seluruh hak cipta dilindungi.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
