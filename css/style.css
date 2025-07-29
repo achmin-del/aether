@@ -18,9 +18,10 @@
 }
 [data-theme="dark"] {
   --color-background: #0b2236;
+  --color: #f5f5f5;
   --color-surface: #12344f;
-  --color-text-primary: #d6ecfa;
-  --color-text-secondary: #9bb7cf;
+  --color-text-primary: #1691dd;
+  --color-text-secondary: #4a87bd;
   --color-border: #1d3e58;
 }
 
@@ -31,11 +32,18 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   transition: var(--transition);
   min-height: 100vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* Header */
@@ -61,9 +69,45 @@ body {
   color: var(--color-gold-elegant);
 }
 
-/* Theme Toggle */
-.theme-toggle {
-  background: var(--color-surface);
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-buttons a {
+  text-decoration: none;
+}
+
+.hero-buttons .btn {
+  padding: 0.6rem 0.7rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-elegant),
+    var(--color-blue-premium)
+  );
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(90, 174, 255, 0.08);
+}
+.hero-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 171, 43, 0.788);
+}
+
+.right-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Theme Toggle Button */
+#themeToggle {
+  background-color: var(--color-gray-light);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 10px;
@@ -71,18 +115,25 @@ body {
   transition: var(--transition);
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
-.theme-toggle:hover {
+/* Hover Effect */
+#themeToggle:hover {
+  background-color: var(--color-text-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(180, 156, 115, 0.2);
+  box-shadow: 0 8px 24px rgba(245, 171, 43, 0.788);
 }
 
-.theme-icon {
-  width: 20px;
-  height: 20px;
+/* Icon Styling */
+.sun-icon,
+.moon-icon {
+  width: 23px;
+  height: 23px;
   fill: var(--color-text-primary);
+  transition: fill 0.3s ease;
 }
 
 /* Layout */
@@ -93,12 +144,17 @@ body {
 }
 
 .main {
-  padding: 64px 0;
+  padding: 42px 0;
 }
 
 .hero {
   text-align: center;
   margin-bottom: 80px;
+  padding: 0 16px;
+  position: relative;
+  background: linear-gradient(135deg, var(--color-gray-light));
+  border-radius: 20px;
+  padding: 64px 16px;
 }
 
 .hero h1 {
@@ -123,38 +179,11 @@ body {
   line-height: 1.6;
 }
 
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.hero-buttons .btn {
-  padding: 0.75rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(
-    135deg,
-    var(--color-gold-elegant),
-    var(--color-blue-premium)
-  );
-  color: #fff;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: 0 4px 16px rgba(90, 174, 255, 0.08);
-}
-
-.hero-buttons .btn:hover {
-  background: linear-gradient(
-    135deg,
-    var(--color-blue-premium),
-    var(--color-gold-elegant)
-  );
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(90, 174, 255, 0.15);
+.topics {
+  margin-bottom: 32px;
+  padding: 1rem 0;
+  text-align: center;
+  position: relative;
 }
 
 /* Topic Cards */
@@ -169,13 +198,12 @@ body {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 32px;
+  padding: 24px;
   text-align: center;
   cursor: pointer;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
-
   opacity: 0;
   transform: translateY(40px);
   animation: fadeSlideUp 0.7s ease forwards;
@@ -257,7 +285,7 @@ body {
 }
 
 .topic-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 12px;
 }
@@ -317,8 +345,65 @@ body {
   }
 }
 
+.how-to-access {
+  background: var(--color-surface);
+  padding: 3rem 1rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.how-to-access h2 {
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+.how-to-access ol {
+  list-style-position: inside;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+.how-to-access a {
+  color: var(--color-gold-elegant);
+  text-decoration: underline;
+}
+
+/* from saran */
+.from-saran {
+  text-align: center;
+  margin: 20px 20px;
+  padding: 0 16px;
+  position: relative;
+}
+
+.from-saran button {
+  padding: 1rem;
+  margin: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--color-gold-elegant);
+}
+
+.from-saran button a {
+  text-align: center;
+  text-decoration: none;
+  color: #0b1d38;
+}
+
+/* Footer */
+.footer {
+  background: var(--color-surface);
+  padding: 1rem 0;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+.footer p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+  /* hero */
   .hero h1 {
     font-size: 2.25rem;
   }
@@ -327,6 +412,7 @@ body {
     font-size: 1.1rem;
   }
 
+  /* topics */
   .topic-card {
     padding: 24px;
   }
