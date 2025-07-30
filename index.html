@@ -22,6 +22,9 @@
       rel="stylesheet"
     />
 
+    <!-- Link - PWA -->
+    <link rel="manifest" href="manifest.json" />
+
     <!-- Link - CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -247,6 +250,10 @@
 
       // Initialize
       loadTopics();
+      // Register service worker for PWA
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js");
+      }
     </script>
   </body>
 </html>
