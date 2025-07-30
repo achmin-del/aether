@@ -15,10 +15,12 @@
 
     <!-- Link - Icons -->
     <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
 
+    <!-- Link - PWA -->
+    <link rel="manifest" href="manifest.json" />
     <!-- Link - CSS -->
     <link rel="stylesheet" href="css/quiz-style.css" />
   </head>
@@ -97,7 +99,8 @@
     </header>
 
     <main class="main">
-            <section class="guide-section">
+      <!-- Section: Panduan - Only shown on difficulty screen -->
+      <section class="guide-section" id="guideSection">
         <div class="container">
           <h2 class="guide-title">Cara Mengerjakan Kuis</h2>
           <div class="guide-cards">
@@ -133,6 +136,7 @@
           </div>
         </div>
       </section>
+
       <div class="container">
         <!-- Progress Section -->
         <div class="progress-section">
@@ -271,9 +275,9 @@
     </div>
 
     <!-- Link - Script(JavaScript) -->
-    <script src="js/script.js"></script>
     <script src="js/questions.js"></script>
     <script src="js/quiz.js"></script>
+    <script src="js/script.js"></script>
     <script>
       // Theme toggle functionality
       const themeToggle = document.getElementById("themeToggle");
@@ -301,6 +305,11 @@
           moonIcon.style.display = "none";
         }
       });
+
+      // Register service worker for PWA
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js");
+      }
     </script>
   </body>
 </html>
